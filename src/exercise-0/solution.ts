@@ -22,8 +22,8 @@ const createBadge = (firstName: string, lastName: string): Badge => {
           obj.lastName = value;
           return true;
         case "fullName":
-          if (value.includes(" ")) {
-            throw new TypeError("Error: invalid fullName format");
+          if (!value.includes(" ")) {
+            throw new Error("Error: invalid fullName format");
           }
           const [firstName, lastName] = value.split(" ");
           obj.firstName = firstName;
@@ -31,7 +31,7 @@ const createBadge = (firstName: string, lastName: string): Badge => {
           obj.fullName = value;
           return true;
         default:
-          throw new TypeError("Error: unknown");
+          throw new Error("Error: unknown");
       }
     },
   };
