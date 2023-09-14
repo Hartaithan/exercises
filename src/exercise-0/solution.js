@@ -1,19 +1,12 @@
-interface Badge {
-  [key: string | symbol]: string;
-  firstName: string;
-  lastName: string;
-  fullName: string;
-}
-
-const createBadge = (firstName: string, lastName: string): Badge => {
-  const handler: ProxyHandler<Badge> = {
+const createBadge = (firstName, lastName) => {
+  const handler = {
     get: (target, name) => {
       if (name === "fullName") {
         return `${target.firstName} ${target.lastName}`;
       }
       return target[name];
     },
-    set: (obj, prop, value: string) => {
+    set: (obj, prop, value) => {
       switch (prop) {
         case "firstName":
           obj.firstName = value;

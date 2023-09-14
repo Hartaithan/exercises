@@ -1,10 +1,4 @@
-interface Badge {
-  firstName: string;
-  lastName: string;
-  fullName: string;
-}
-
-const createBadge = (_firstName: string, _lastName: string): Badge => {
+const createBadge = (_firstName, _lastName) => {
   let firstName = _firstName;
   let lastName = _lastName;
   let fullName = `${_firstName} ${_lastName}`;
@@ -18,13 +12,13 @@ const createBadge = (_firstName: string, _lastName: string): Badge => {
     get fullName() {
       return `${firstName} ${lastName}`;
     },
-    set firstName(value: string) {
+    set firstName(value) {
       firstName = value;
     },
-    set lastName(value: string) {
+    set lastName(value) {
       lastName = value;
     },
-    set fullName(value: string) {
+    set fullName(value) {
       if (!value.includes(" ")) {
         throw new Error("Error: invalid fullName format");
       }
